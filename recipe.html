@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rezept</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css" />
   <script src="assets/js/recipe.js" defer></script>
 </head>
 <body>
-  <h1 id="recipe-title">Rezept wird geladen...</h1>
-  <p id="recipe-intro"></p>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="index.html">Kochbuch</a>
+      <nav class="nav"><a href="index.html">Zur Übersicht</a></nav>
+    </div>
+  </header>
 
-  <h2>Zutaten</h2>
-  <ul id="ingredients"></ul>
+  <main class="container grid" style="gap:24px">
+    <!-- Hero -->
+    <section class="recipe-hero">
+      <div class="recipe-hero__media" id="hero-image" aria-hidden="true"></div>
+      <div class="recipe-hero__content">
+        <h1 class="recipe-title" id="recipe-title">Wird geladen…</h1>
+        <p class="recipe-intro" id="recipe-intro"></p>
+        <div class="meta-bar" id="meta-bar"></div>
+      </div>
+    </section>
 
-  <h2>Zubereitung</h2>
-  <ol id="steps"></ol>
+    <!-- 2-Spalten Layout -->
+    <section class="grid recipe-layout">
+      <aside class="box">
+        <h2 class="section-title">Zutaten</h2>
+        <ul class="list" id="ingredients"></ul>
+        <button class="btn" id="copy-ingredients" type="button">Zutaten kopieren</button>
+      </aside>
+
+      <article class="box">
+        <h2 class="section-title">Zubereitung</h2>
+        <ol class="list" id="steps"></ol>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">© 2025</footer>
 </body>
 </html>

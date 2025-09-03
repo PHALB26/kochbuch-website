@@ -1,13 +1,184 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 2rem;
-  line-height: 1.6;
+/* =========================================
+   Veganes Kochbuch – Clean Theme (rewritten)
+   - Tokens
+   - Reset
+   - Header/Nav
+   - Cards/Grid (Startseite)
+   - Recipe Layout (recipe.html)
+   - Buttons & Meta Pills
+   - Footer
+   ========================================= */
+
+/* ---------- Design Tokens ---------- */
+:root{
+  /* Farben */
+  --color-bg: #f9f9f9;
+  --color-surface: #fff;
+  --color-text: #000;
+  --color-muted: #444;
+  --color-border: #eee;
+
+  /* Dein Look */
+  --color-primary: #FFB412;      /* Gelb wie bei dir */
+  --color-primary-hover: #ffca4a;
+
+  /* Buttons sekundär (grau) */
+  --btn-bg: #efefef;
+  --btn-bg-hover: #e6e6e6;
+
+  /* Radius & Shadow */
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.08);
+  --shadow-md: 0 2px 10px rgba(0,0,0,.08);
+
+  /* Layout */
+  --container: 1100px;
+
+  /* Typo */
+  --base-font: 16px;
+  --fs-100: 14px;
+  --fs-200: 16px;
+  --fs-300: 18px;
+  --fs-400: 22px;
+  --fs-500: 28px;
+
+  /* (für späteren Kochmodus Zoom) */
+  --cook-font-size: var(--base-font);
 }
 
-h1 {
-  color: #333;
+/* ---------- Reset ---------- */
+*,*::before,*::after{ box-sizing:border-box }
+html{ font-size: var(--base-font) }
+body{
+  margin:0; min-height:100vh;
+  font: 400 var(--fs-200)/1.6 'Segoe UI', Arial, sans-serif;
+  color:var(--color-text); background:var(--color-bg);
+  display:flex; flex-direction:column;
+}
+img{ max-width:100%; display:block }
+
+/* ---------- Utilities ---------- */
+.container{ max-width:var(--container); margin-inline:auto; padding:24px }
+.grid{ display:grid; gap:24px }
+
+/* ---------- Header / Nav ---------- */
+.site-header{
+  position:sticky; top:0; z-index:10;
+  background:var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+.site-header .inner{
+  max-width:var(--container);
+  margin:0 auto;
+  padding: 20px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{
+  font-weight:700; font-size:1.8rem; color:inherit; text-decoration:none;
+}
+.nav{ display:flex; gap:30px; list-style:none; margin:0; padding:0 }
+.nav a{
+  text-decoration:none; color:var(--color-text); font-size:18px;
+  transition:.2s ease; padding:6px 8px; border-radius:10px;
+}
+.nav a:hover{ transform:scale(1.07); color:#6a6a6a }
+.nav a[aria-current="page"]{ font-weight:700 }
+
+/* ---------- Cards / Grid (Startseite) ---------- */
+.recipes{ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.card{
+  background:var(--color-surface); border-radius:var(--radius-sm);
+  overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.1);
+  transition:.25s; display:flex; flex-direction:column; width:100%;
+}
+.card:hover{ transform: translateY(-5px); box-shadow:0 4px 12px rgba(0,0,0,.15) }
+.card__media{ aspect-ratio: 4/3; background:#eee; overflow:hidden }
+.card__media img{ width:100%; height:100%; object-fit:cover }
+.card__body{ padding:12px }
+.card__title{ margin:0 0 6px; font-size:1rem; font-weight:700; text-align:center }
+.card__meta{ text-align:center; color:var(--color-muted); font-size:var(--fs-100) }
+.card__title a{ text-decoration:none; color:inherit; display:inline-block }
+
+/* ---------- Recipe Page (recipe.html) ---------- */
+.recipe-hero{
+  background:var(--color-surface); border-radius:var(--radius-md);
+  box-shadow: var(--shadow-md); overflow:hidden;
+}
+.recipe-hero__media{ aspect-ratio:16/9; background:#eee }
+.recipe-hero__content{ padding:18px 18px 8px }
+.recipe-title{ margin:0; font-size:var(--fs-500) }
+.recipe-intro{ color:#444; font-style:italic; margin:10px 0 16px }
+
+.meta-bar{
+  display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;
+}
+.meta-pill{
+  font-size:.95rem; color:#222;
+  padding:10px 14px; background:#f2f2f2; border-radius:10px;
+  box-shadow:0 1px 0 rgba(0,0,0,.03) inset;
 }
 
-ul, ol {
-  padding-left: 1.5rem;
+/* 2-Spalten Layout wie bei dir: Zutaten links, Steps rechts */
+.recipe-layout{
+  grid-template-columns: 1.3fr .9fr; align-items:start; margin-top:18px;
 }
+@media (max-width: 860px){ .recipe-layout{ grid-template-columns:1fr } }
+
+.box{
+  background:var(--color-surface);
+  border-radius:var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding:18px;
+}
+.section-title{ margin:0 0 10px; font-size:var(--fs-400) }
+.list{ margin:0; padding-left:1.25rem }
+.list--plain{ list-style:none; padding-left:0 }
+
+/* Steps mit gelbem Zähler-Kreis (dein Markenzeichen) */
+ol.list{
+  counter-reset: step;
+}
+ol.list > li{
+  list-style:none;
+  display:grid; grid-template-columns:30px minmax(0,1fr); column-gap:12px;
+  background:var(--color-surface);
+  color:var(--color-text); font-size:1rem; margin-bottom:15px;
+}
+ol.list > li::before{
+  counter-increment: step;
+  content: counter(step);
+  display:flex; align-items:center; justify-content:center;
+  width:30px; height:30px; border-radius:50%;
+  background:var(--color-primary); color:#000; font-weight:700; font-size:1rem; margin-top:2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px; border:0; border-radius:var(--radius-sm);
+  cursor:pointer; text-decoration:none; font:inherit;
+  box-shadow: var(--shadow-sm); transition: transform .06s ease, background .15s ease;
+}
+.btn:hover{ transform: translateY(-1px) }
+.btn:active{ transform: translateY(0) }
+
+.btn--primary{ background:var(--color-primary); color:#000 }
+.btn--primary:hover{ background:var(--color-primary-hover) }
+
+.btn--ghost{ background:var(--btn-bg); color:#111 }
+.btn--ghost:hover{ background:var(--btn-bg-hover) }
+
+/* Zutaten-Toolbar (Portionen/Copy) – optional später erweiterbar */
+.toolbar{ display:flex; gap:10px; align-items:center; margin:18px 0 20px }
+.toolbar .btn{ font-weight:600 }
+
+/* ---------- Footer ---------- */
+.site-footer{
+  margin-top:auto; text-align:center; padding:20px;
+  background:#333; color:#fff; font-size:var(--fs-100);
+}
+
+/* ---------- (Vorbereitung für Kochmodus/Timer – später) ---------- */
+html.cook-zoom{ font-size: var(--cook-font-size, var(--base-font)); }
+/* Timer/Progress/Fs-Controls übernehmen wir später gezielt in ein cookmode.css */

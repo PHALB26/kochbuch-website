@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kochbuch Übersicht</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veganes Jahreszeiten-Kochbuch</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <h1>Veganes Jahreszeiten-Kochbuch</h1>
-  <ul>
-    <li><a href="recipe.html?id=spargelcremesuppe">Spargelcremesuppe</a></li>
-    <li><a href="recipe.html?id=fruehlingssalat">Frühlingssalat</a></li>
-    <li><a href="recipe.html?id=vier-schnelle-salatdressings">Vier schnelle Salatdressings</a></li>
-    <li><a href="recipe.html?id=kohlrabi-slaw">Kohlrabi Slaw</a></li>
-    <li><a href="recipe.html?id=baerlauch-focaccia">Bärlauch-Focaccia</a></li>
-  </ul>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="index.html">Kochbuch</a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="#" aria-current="page">Frühling</a>
+        <a href="#">Sommer</a>
+        <a href="#">Herbst</a>
+        <a href="#">Winter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 style="margin:0 0 12px">Frühlingsrezepte</h1>
+    <p class="recipe-intro" style="margin-bottom:24px">Einfach, saisonal, vegan.</p>
+
+    <section class="grid recipes">
+      <!-- Karte -->
+      <article class="card">
+        <div class="card__media">
+          <img src="assets/img/spargelcremesuppe.jpg" alt="Spargelcremesuppe">
+        </div>
+        <div class="card__body">
+          <h3 class="card__title"><a class="btn btn--ghost" href="recipe.html?id=spargelcremesuppe">Spargelcremesuppe</a></h3>
+          <div class="card__meta">Suppe · 25 Min · leicht</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__media">
+          <img src="assets/img/fruehlingssalat.jpg" alt="Frühlingssalat">
+        </div>
+        <div class="card__body">
+          <h3 class="card__title"><a class="btn btn--ghost" href="recipe.html?id=fruehlingssalat">Frühlingssalat</a></h3>
+          <div class="card__meta">Salat · 15 Min · leicht</div>
+        </div>
+      </article>
+
+      <!-- weitere Karten analog … -->
+    </section>
+  </main>
+
+  <footer class="site-footer">© 2025</footer>
 </body>
 </html>
