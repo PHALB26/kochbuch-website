@@ -1,54 +1,72 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Veganes Jahreszeiten-Kochbuch</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <header class="site-header">
-    <div class="inner">
-      <a class="brand" href="index.html">Kochbuch</a>
-      <nav class="nav" aria-label="Hauptnavigation">
-        <a href="#" aria-current="page">Frühling</a>
-        <a href="#">Sommer</a>
-        <a href="#">Herbst</a>
-        <a href="#">Winter</a>
-      </nav>
+
+<header>
+  <h1><a href="index.html">Veganes Jahreszeiten-Kochbuch</a></h1>
+  <nav>
+    <ul>
+      <li><a href="fruehling.html">Frühling</a></li>
+      <li><a href="sommer.html">Sommer</a></li>
+      <li><a href="herbst.html">Herbst</a></li>
+      <li><a href="winter.html">Winter</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="welcome-page">
+  <div class="welcome-container">
+    <h2>Willkommen in meinem veganen Jahreszeiten-Kochbuch!</h2>
+    <p>
+      Hier findest du eine Vielzahl von saisonalen, veganen Rezepten,
+      aufgeteilt in die vier Jahreszeiten.
+    </p>
+    <p>
+      Durch die Kombination von klassischen Rezepten und modernen,
+      interaktiven Funktionen kannst du die Gerichte nicht nur lesen,
+      sondern auch im Kochmodus Schritt für Schritt nachkochen.
+    </p>
+
+    <!-- Kleine Vorschau-Kacheln wie auf den Saisonseiten -->
+    <div class="grid" style="margin-top:40px;">
+      <div class="recipe-card">
+        <a href="fruehling.html">
+          <img src="img/rezepte/fruehlingssalat.jpg" alt="Frühling">
+          <h3>Frühlingsrezepte</h3>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="sommer.html">
+          <img src="img/rezepte/salatdressings.jpg" alt="Sommer">
+          <h3>Sommerrezepte</h3>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="herbst.html">
+          <img src="img/rezepte/kohlrabischnitzel.jpg" alt="Herbst">
+          <h3>Herbstrezepte</h3>
+        </a>
+      </div>
+      <div class="recipe-card">
+        <a href="winter.html">
+          <img src="img/rezepte/hefezopf.jpg" alt="Winter">
+          <h3>Winterrezepte</h3>
+        </a>
+      </div>
     </div>
-  </header>
 
-  <main class="container">
-    <h1 style="margin:0 0 12px">Frühlingsrezepte</h1>
-    <p class="recipe-intro" style="margin-bottom:24px">Einfach, saisonal, vegan.</p>
+  </div>
+</main>
 
-    <section class="grid recipes">
-      <!-- Karte -->
-      <article class="card">
-        <div class="card__media">
-          <img src="assets/img/spargelcremesuppe.jpg" alt="Spargelcremesuppe">
-        </div>
-        <div class="card__body">
-          <h3 class="card__title"><a class="btn btn--ghost" href="recipe.html?id=spargelcremesuppe">Spargelcremesuppe</a></h3>
-          <div class="card__meta">Suppe · 25 Min · leicht</div>
-        </div>
-      </article>
+<footer>
+  <p>&copy; 2025 Chantal Leux</p>
+</footer>
 
-      <article class="card">
-        <div class="card__media">
-          <img src="assets/img/fruehlingssalat.jpg" alt="Frühlingssalat">
-        </div>
-        <div class="card__body">
-          <h3 class="card__title"><a class="btn btn--ghost" href="recipe.html?id=fruehlingssalat">Frühlingssalat</a></h3>
-          <div class="card__meta">Salat · 15 Min · leicht</div>
-        </div>
-      </article>
-
-      <!-- weitere Karten analog … -->
-    </section>
-  </main>
-
-  <footer class="site-footer">© 2025</footer>
 </body>
 </html>
