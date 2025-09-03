@@ -1,0 +1,18 @@
+{
+  "title": "Vier schnelle Salatdressings",
+  "intro": "Vier einfache Varianten für leckere Dressings.",
+  "ingredients": [
+    "Olivenöl",
+    "Essig",
+    "Zitrone",
+    "Senf",
+    "Kräuter",
+    "Salz, Pfeffer"
+  ],
+  "steps": [
+    "Variante 1: Klassisch – Olivenöl, Essig, Salz, Pfeffer.",
+    "Variante 2: Zitrone & Kräuter – Zitronensaft, Olivenöl, frische Kräuter.",
+    "Variante 3: Senf – Olivenöl, Essig, Senf, Salz, Pfeffer.",
+    "Variante 4: Kräuterjoghurt – pflanzlicher Joghurt, Zitrone, Kräuter, Salz."
+  ]
+}
