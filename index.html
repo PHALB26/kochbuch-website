@@ -4,61 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veganes Jahreszeiten-Kochbuch</title>
-  <!-- Einheitlicher, korrekter Pfad zum CSS -->
-  <link rel="stylesheet" href="assets/css/style.css?v=1">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-  <header>
-    <h1><a href="index.html">Veganes Jahreszeiten-Kochbuch</a></h1>
-    <nav>
-      <ul>
-        <li><a href="fruehling.html">Frühling</a></li>
-        <li><a href="sommer.html">Sommer</a></li>
-        <li><a href="herbst.html">Herbst</a></li>
-        <li><a href="winter.html">Winter</a></li>
-      </ul>
-    </nav>
-  </header>
 
   <main class="welcome-page">
     <div class="welcome-container">
       <h2>Willkommen in meinem veganen Jahreszeiten-Kochbuch!</h2>
-      <p>
-        Hier findest du eine Vielzahl von saisonalen, veganen Rezepten, 
-        aufgeteilt in die vier Jahreszeiten. 
-        Durch die Kombination von klassischen Rezepten und modernen, 
-        interaktiven Funktionen kannst du die Gerichte nicht nur lesen, 
-        sondern auch im Kochmodus Schritt für Schritt nachkochen.
-      </p>
-      <p>
-        Wähle einfach deine gewünschte Jahreszeit oben im Menü 
-        oder starte direkt mit den Frühlingsrezepten!
-      </p>
+      <p>Hier findest du eine Vielzahl von saisonalen, veganen Rezepten …</p>
 
-      <!-- Übersichtskacheln für die 4 Jahreszeiten -->
       <div class="grid" style="margin-top:40px;">
         <div class="recipe-card">
-          <a href="fruehling.html">
-            <img src="assets/img/fruehlingssalat.jpg" alt="Frühling">
+          <a href="season-pages/fruehling/index.html">
+            <img src="assets/img/fruehling/spargelcremesuppe/spargelcremesuppe.jpg" alt="Frühling">
             <h3>Frühlingsrezepte</h3>
           </a>
         </div>
         <div class="recipe-card">
-          <a href="sommer.html">
-            <img src="assets/img/salatdressings.jpg" alt="Sommer">
+          <a href="season-pages/sommer/index.html">
+            <img src="assets/img/sommer/placeholder.jpg" alt="Sommer">
             <h3>Sommerrezepte</h3>
           </a>
         </div>
         <div class="recipe-card">
-          <a href="herbst.html">
-            <img src="assets/img/kohlrabischnitzel.jpg" alt="Herbst">
+          <a href="season-pages/herbst/index.html">
+            <img src="assets/img/herbst/placeholder.jpg" alt="Herbst">
             <h3>Herbstrezepte</h3>
           </a>
         </div>
         <div class="recipe-card">
-          <a href="winter.html">
-            <img src="assets/img/hefezopf.jpg" alt="Winter">
+          <a href="season-pages/winter/index.html">
+            <img src="assets/img/winter/placeholder.jpg" alt="Winter">
             <h3>Winterrezepte</h3>
           </a>
         </div>
@@ -66,9 +42,7 @@
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Chantal Leux</p>
-  </footer>
-
+  <!-- Partials + Active-Logik -->
+  <script src="assets/js/app.js" defer></script>
 </body>
 </html>
