@@ -1,0 +1,95 @@
+{
+  "title": "Spargelcremesuppe",
+  "intro": "Eine leichte, cremige Suppe mit frischem Spargel.",
+  "heroImage": "assets/img/fruehling/spargelcremesuppe/spargelcremesuppe.jpg",
+  "meta": {
+    "basePortions": 4,
+    "difficulty": "leicht",
+    "time": { "prep": "25 Min.", "cook": "15 Min.", "total": "40 Min." }
+  },
+  "utensils": [
+    "Schneidebrett",
+    "Messer",
+    "Sparschäler",
+    "Großer Topf",
+    "Kochlöffel",
+    "Pürierstab",
+    "Messbecher",
+    "Waage",
+    "Schöpfkelle"
+  ],
+
+  "ingredients": [
+    { "group": "Für die Suppe" },
+    { "base": 1000, "unit": "g", "text": "weißer Spargel (ungeschält)" },
+    { "base": 60,   "unit": "g", "text": "vegane Butter oder Margarine" },
+    { "base": 1,    "unit": "TL", "text": "Zucker" },
+    { "base": 1,    "unit": "TL", "text": "Salz" },
+    { "base": 50,   "unit": "g", "text": "Weizenmehl" },
+    { "base": 750,  "unit": "ml", "text": "Wasser" },
+    { "base": 150,  "unit": "ml", "text": "vegane Kochsahne" },
+    { "base": 45,   "unit": "ml", "text": "Zitronensaft" },
+    { "noScale": true, "text": "Pfeffer" },
+    { "noScale": true, "text": "Salz" },
+    { "noScale": true, "text": "Muskatnuss" },
+    { "group": "Zum Servieren" },
+    { "base": 1, "wordSingular": "Bund", "wordPlural": "Bünde", "text": "Schnittlauch" }
+  ],
+
+  "steps": [
+    { "parts": [
+      { "scaled": { "base": 1000, "unit": "g" } },
+      { "text": " weißen Spargel schälen, Enden entfernen und in Stücke schneiden." }
+    ]},
+    { "parts": [
+      { "text": "In einem Topf " },
+      { "scaled": { "base": 60, "unit": "g" } },
+      { "text": " Margarine schmelzen, " },
+      { "scaled": { "base": 1, "unit": "TL" } },
+      { "text": " Zucker und " },
+      { "scaled": { "base": 1, "unit": "TL" } },
+      { "text": " Salz zugeben, Spargel 2 Min. anschwitzen." }
+    ]},
+    { "parts": [
+      { "scaled": { "base": 50, "unit": "g" } },
+      { "text": " Mehl einrühren, 1 Min. rühren." }
+    ]},
+    { "timer": "12:00", "parts": [
+      { "text": "Unter Rühren " },
+      { "scaled": { "base": 750, "unit": "ml" } },
+      { "text": " Wasser zugießen, aufkochen und 12 Min. köcheln lassen." }
+    ]},
+    { "parts": [
+      { "text": "Etwa " },
+      { "scaled": { "base": 100, "unit": "g" } },
+      { "text": " Spargelstücke entnehmen und beiseitestellen." }
+    ]},
+    { "parts": [
+      { "text": "Pürieren, " },
+      { "scaled": { "base": 150, "unit": "ml" } },
+      { "text": " Kochsahne und " },
+      { "scaled": { "base": 45, "unit": "ml" } },
+      { "text": " Zitronensaft einrühren, abschmecken." }
+    ]},
+    { "parts": [
+      { "scaled": { "base": 1, "wordSingular": "Bund", "wordPlural": "Bünde" } },
+      { "text": " Schnittlauch in Röllchen schneiden." }
+    ]},
+    { "parts": [
+      { "text": "Suppe anrichten, mit Schnittlauch bestreuen." }
+    ]}
+  ],
+
+  "tips": "Dazu passt Baguette oder ein Frühlingssalat.",
+  "nutritionRows": [
+    ["Energie", "270 kcal / 1130 kJ"],
+    ["Fett", "15,9 g"],
+    ["davon gesättigte Fettsäuren", "4,5 g"],
+    ["Kohlenhydrate", "24,7 g"],
+    ["davon Zucker", "8,1 g"],
+    ["Ballaststoffe", "5,6 g"],
+    ["Eiweiß", "7,1 g"],
+    ["Salz", "2,0 g"],
+    ["KE", "2,5"]
+  ]
+}
