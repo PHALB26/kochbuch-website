@@ -1,40 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Veganes Jahreszeiten-Kochbuch</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
   <main class="welcome-page">
     <div class="welcome-container">
       <h2>Willkommen in meinem veganen Jahreszeiten-Kochbuch!</h2>
-      <p>Hier findest du eine Vielzahl von saisonalen, veganen Rezepten …</p>
+      <p>
+        Hier findest du saisonale, vegane Rezepte – aufgeteilt in die vier Jahreszeiten.
+        Mit dem Kochmodus kannst du die Gerichte Schritt für Schritt nachkochen.
+      </p>
+      <p>Wähle oben im Menü eine Jahreszeit oder starte direkt hier:</p>
 
+      <!-- Übersichtskacheln -->
       <div class="grid" style="margin-top:40px;">
         <div class="recipe-card">
           <a href="season-pages/fruehling/index.html">
-            <img src="assets/img/fruehling/spargelcremesuppe/spargelcremesuppe.jpg" alt="Frühling">
+            <!-- du hast dieses Bild sicher -->
+            <img src="assets/img/fruehling/spargelcremesuppe/spargelcremesuppe.jpg" alt="Frühling" />
             <h3>Frühlingsrezepte</h3>
           </a>
         </div>
+
         <div class="recipe-card">
           <a href="season-pages/sommer/index.html">
-            <img src="assets/img/sommer/placeholder.jpg" alt="Sommer">
+            <!-- optional: Bild ergänzen, wenn vorhanden -->
             <h3>Sommerrezepte</h3>
           </a>
         </div>
+
         <div class="recipe-card">
           <a href="season-pages/herbst/index.html">
-            <img src="assets/img/herbst/placeholder.jpg" alt="Herbst">
             <h3>Herbstrezepte</h3>
           </a>
         </div>
+
         <div class="recipe-card">
           <a href="season-pages/winter/index.html">
-            <img src="assets/img/winter/placeholder.jpg" alt="Winter">
             <h3>Winterrezepte</h3>
           </a>
         </div>
@@ -42,7 +49,9 @@
     </div>
   </main>
 
-  <!-- Partials + Active-Logik -->
+  <button id="backToTop" title="Nach oben">↑</button>
+
+  <!-- Header/Footer werden per app.js aus /partials/ injiziert -->
   <script src="assets/js/app.js" defer></script>
 </body>
 </html>

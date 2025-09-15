@@ -80,7 +80,7 @@
     ]}
   ],
 
-  "tipsParts": [
+  "tips": [
   "Dazu passt Baguette oder ein ",
   { "recipeRef": { "season": "fruehling", "slug": "fruehlingssalat", "label": "Frühlingssalat" } },
   "."

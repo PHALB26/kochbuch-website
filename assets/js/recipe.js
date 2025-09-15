@@ -1,6 +1,7 @@
 // assets/js/recipe.js
 
-function spanScaled(o){
+/* ---------- kleine DOM-Helfer ---------- */
+function spanScaled(o) {
   const s = document.createElement("span");
   s.className = "scaled";
   s.dataset.base = o.base;
@@ -15,16 +16,16 @@ function spanScaled(o){
   return s;
 }
 
-function liIngredient(it){
-  if (it.group){
+function liIngredient(it) {
+  if (it.group) {
     const h = document.createElement("h4");
     h.textContent = it.group;
     return h;
   }
   const li = document.createElement("li");
 
-  if (it.noScale){
-    li.setAttribute("data-no-scale","true");
+  if (it.noScale) {
+    li.setAttribute("data-no-scale", "true");
     li.textContent = it.text || "";
     return li;
   }
@@ -32,16 +33,16 @@ function liIngredient(it){
   li.dataset.base = it.base;
   if (it.unit) li.dataset.unit = it.unit;
   if (it.wordSingular) li.dataset.wordSingular = it.wordSingular;
-  if (it.wordPlural)  li.dataset.wordPlural  = it.wordPlural;
+  if (it.wordPlural) li.dataset.wordPlural = it.wordPlural;
   li.dataset.originalText = it.text || "";
 
-  const num  = String(it.base);
-  const unit = it.unit ? "\u00A0"+it.unit : "";
+  const num = String(it.base);
+  const unit = it.unit ? "\u00A0" + it.unit : "";
   li.textContent = `${num}${unit} ${it.text || ""}`.trim();
   return li;
 }
 
-function liStep(step){
+function liStep(step) {
   const li = document.createElement("li");
   if (step.timer) li.setAttribute("data-timer", step.timer);
 
@@ -49,7 +50,7 @@ function liStep(step){
   div.className = "step-text";
 
   (step.parts || []).forEach(p => {
-    if (p.text)   div.appendChild(document.createTextNode(p.text));
+    if (p.text) div.appendChild(document.createTextNode(p.text));
     if (p.scaled) div.appendChild(spanScaled(p.scaled));
   });
 
@@ -57,13 +58,14 @@ function liStep(step){
   return li;
 }
 
+/* ---------- Seite aufbauen ---------- */
 document.addEventListener("DOMContentLoaded", async () => {
   const root = $("#recipe-root");
   const path = getRecipePath(); // z. B. "fruehling/spargelcremesuppe"
-  if (!root){ console.error("#recipe-root fehlt."); return; }
-  if (!path){ root.innerHTML = "<p>Kein Rezept ausgewählt.</p>"; return; }
+  if (!root) { console.error("#recipe-root fehlt."); return; }
+  if (!path)  { root.innerHTML = "<p>Kein Rezept ausgewählt.</p>"; return; }
 
-  try{
+  try {
     const [season, slug] = path.split("/");
 
     // Pfad-Prefix: Wrapper liegt unter /recipe-pages/<s>/<slug>/ (3 Ebenen tief)
@@ -71,11 +73,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const isWrapper = location.pathname.includes("/recipe-pages/");
     const P = isWrapper ? "../../../" : "";
 
-    // JSON laden (flach pro Saison)
+    // Rezept-JSON (flach pro Saison) laden
     const data = await loadJSON(`${P}data/recipes/${season}/${slug}.json`);
 
     const meta = data.meta || {};
-    const t    = meta.time || {};
+    const t = meta.time || {};
     const heroSrc = `${P}${data.heroImage || `assets/img/${season}/${slug}/${slug}.jpg`}`;
 
     // Grundgerüst – IDs/Klassen kompatibel zu cookmode.js
@@ -150,16 +152,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       <div class="related">
         <h3>Tipps</h3>
-        <p>${data.tips || "–"}</p>
+        <p id="tips-text">–</p>
       </div>
 
-      ${Array.isArray(data.nutritionRows) && data.nutritionRows.length
-        ? `<h3>Nährwerte pro Portion</h3>
-           <table class="nutrition-table"><tbody>
-             ${data.nutritionRows.map(([k,v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join("")}
-           </tbody></table>
-           <p class="nutrition-note">Die Nährwerte wurden automatisch berechnet und dienen nur als Orientierung.</p>`
-        : "" }
+      ${
+        Array.isArray(data.nutritionRows) && data.nutritionRows.length
+          ? `<h3>Nährwerte pro Portion</h3>
+             <table class="nutrition-table"><tbody>
+               ${data.nutritionRows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join("")}
+             </tbody></table>
+             <p class="nutrition-note">Die Nährwerte wurden automatisch berechnet und dienen nur als Orientierung.</p>`
+          : ""
+      }
 
     </div>
   </main>
@@ -181,7 +185,45 @@ document.addEventListener("DOMContentLoaded", async () => {
     const stepsOL = $("#zubereitung");
     (data.steps || []).forEach(st => stepsOL.appendChild(liStep(st)));
 
-  } catch (e){
+    // Tipps (Strings + recipeRef → Links)
+    (function renderTips() {
+      const target = document.getElementById("tips-text");
+      if (!target) return;
+
+      // Basis bis inkl. "/recipe-pages/" ermitteln, damit keine doppelten Pfade entstehen
+      function recipePagesBase() {
+        const p = location.pathname.replace(/\\/g, "/");
+        const i = p.indexOf("/recipe-pages/");
+        if (i >= 0) return p.slice(0, i + "/recipe-pages/".length);
+        // Dev-Fall (recipe.html): relativ von hier aus
+        return `${P}recipe-pages/`;
+      }
+      function makeRecipeUrl(seasonName, slugName) {
+        return `${recipePagesBase()}${seasonName}/${slugName}/index.html`;
+      }
+
+      const tipsVal = data.tips;
+      if (!tipsVal || (Array.isArray(tipsVal) && tipsVal.length === 0)) {
+        target.textContent = "–";
+        return;
+      }
+
+      const parts = Array.isArray(tipsVal) ? tipsVal : [tipsVal];
+      target.textContent = "";
+      parts.forEach(part => {
+        if (typeof part === "string") {
+          target.appendChild(document.createTextNode(part));
+        } else if (part && part.recipeRef) {
+          const { season: s, slug: sg, label } = part.recipeRef;
+          const a = document.createElement("a");
+          a.href = makeRecipeUrl(s, sg);
+          a.textContent = label || sg;
+          target.appendChild(a);
+        }
+      });
+    })();
+
+  } catch (e) {
     console.error(e);
     root.innerHTML = `<p class="error">Rezept konnte nicht geladen werden.</p>`;
   }
