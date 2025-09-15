@@ -80,7 +80,14 @@
     ]}
   ],
 
-  "tips": "Dazu passt Baguette oder ein Frühlingssalat.",
+  "tipsParts": [
+  "Dazu passt Baguette oder ein ",
+  { "recipeRef": { "season": "fruehling", "slug": "fruehlingssalat", "label": "Frühlingssalat" } },
+  "."
+]
+,
+
+
   "nutritionRows": [
     ["Energie", "270 kcal / 1130 kJ"],
     ["Fett", "15,9 g"],
